@@ -1,0 +1,13 @@
+[Desktop Entry]
+Type=Application
+Version=1.0
+Name=KVM VM Manager
+GenericName=Virtual Machine Manager
+Comment=KVM Gaming VM Manager with GPU Passthrough — run install.sh to personalise
+Exec=bash -c 'bash "$(dirname "$(readlink -f "%k")")/../launch-vmmanager.sh"'
+Icon=computer
+Terminal=false
+Categories=System;Emulator;Virtualization;
+Keywords=kvm;vm;virtual;machine;gpu;passthrough;qemu;libvirt;
+StartupNotify=true
+StartupWMClass=KVM VM Manager
