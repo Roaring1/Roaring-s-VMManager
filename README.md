@@ -1,6 +1,6 @@
 # KVM VM Manager
 
-A graphical manager for KVM virtual machines on Linux — built for gaming setups with **GPU passthrough**, **evdev input passthrough**, and **SPICE console** support.
+A graphical manager for KVM virtual machines on Linux - built for gaming setups with **GPU passthrough**, **evdev input passthrough**, and **SPICE console** support.
 
 > **Designed for:** Nobara / Fedora / Ubuntu / Arch · KDE Plasma · Wayland or X11 · NVIDIA/AMD GPU passthrough
 
@@ -13,8 +13,8 @@ A graphical manager for KVM virtual machines on Linux — built for gaming setup
 | Feature | Description |
 |---|---|
 | **GPU Passthrough** | Bind your secondary GPU to vfio-pci with one click, then pass it directly to the VM |
-| **Input Passthrough** | Share keyboard & mouse with the VM via evdev — switch between host and VM with Left Ctrl + Right Ctrl |
-| **SPICE Console** | Optional virtual display in a window — auto-opens when the VM starts |
+| **Input Passthrough** | Share keyboard & mouse with the VM via evdev - switch between host and VM with Left Ctrl + Right Ctrl |
+| **SPICE Console** | Optional virtual display in a window - auto-opens when the VM starts |
 | **XML Editor** | View and edit your VM's libvirt XML config directly |
 | **Health Check** | Detects common setup problems (IOMMU, libvirtd, missing modules) |
 | **System Monitor** | Live CPU and RAM usage at a glance |
@@ -29,7 +29,7 @@ Your system needs to have **KVM/QEMU** set up before using this app. If you're s
 - PyQt6
 - QEMU/KVM + libvirt (`virsh`)
 - `lspci` (pciutils)
-- `virt-viewer` (optional — for SPICE console)
+- `virt-viewer` (optional - for SPICE console)
 
 ---
 
@@ -66,8 +66,8 @@ That's it. The installer will:
 Double-click **KVM VM Manager** on your Desktop. You'll be prompted for your password (required for GPU operations).
 
 **First time setup checklist:**
-1. Go to **Actions → Health Check** — fix any issues it reports
-2. Read the **Overview** tab — it has a 5-step quick start guide
+1. Go to **Actions → Health Check** - fix any issues it reports
+2. Read the **Overview** tab - it has a 5-step quick start guide
 3. Your VMs will appear in the **VM:** dropdown at the top
 
 ---
@@ -80,7 +80,7 @@ Double-click **KVM VM Manager** on your Desktop. You'll be prompted for your pas
 
 ### Start a VM with GPU passthrough
 1. **GPU Passthrough** tab → click your GPU in the list
-2. Click **🔗 Bind Selected GPU to VFIO** — wait for "✓ VFIO Ready"
+2. Click **🔗 Bind Selected GPU to VFIO** - wait for "✓ VFIO Ready"
 3. Check **Enable GPU Passthrough for this VM**
 4. **Input Devices** tab → check `-event-kbd` for your keyboard, `-event-mouse` for your mouse
 5. Click **▶ Start VM**
@@ -90,7 +90,7 @@ Double-click **KVM VM Manager** on your Desktop. You'll be prompted for your pas
 
 ### Use SPICE (no second GPU needed)
 1. **Display & SPICE** tab → check **Enable SPICE Display**
-2. Click **▶ Start VM** — the console window opens automatically
+2. Click **▶ Start VM** - the console window opens automatically
 
 ---
 
@@ -101,7 +101,7 @@ Double-click **KVM VM Manager** on your Desktop. You'll be prompted for your pas
 ### Enable IOMMU in BIOS and kernel
 
 1. **In your BIOS:** Enable Intel VT-d (Intel) or AMD-Vi (AMD)
-2. **Add kernel parameter** — edit `/etc/default/grub`:
+2. **Add kernel parameter** - edit `/etc/default/grub`:
    ```
    GRUB_CMDLINE_LINUX="... intel_iommu=on"   # Intel CPU
    GRUB_CMDLINE_LINUX="... amd_iommu=on"     # AMD CPU
@@ -138,7 +138,7 @@ sudo systemctl enable --now libvirtd
 The easiest way is to use **virt-manager** to create the initial VM, then use this app to manage and launch it with GPU passthrough.
 
 ```bash
-virt-manager   # GUI wizard — create your VM here first
+virt-manager   # GUI wizard - create your VM here first
 ```
 
 ---
@@ -148,8 +148,8 @@ virt-manager   # GUI wizard — create your VM here first
 | Problem | Fix |
 |---|---|
 | App won't open / blank screen | Run `bash launch-vmmanager.sh` in a terminal to see errors. Check `/tmp/vmmanager-YYYYMMDD.log` |
-| "virsh error — is libvirtd running?" | `sudo systemctl start libvirtd` |
-| GPU shows "✗ Not Bound to VFIO" after binding | Wait 3 seconds — the rescan is delayed. If still failing, check `dmesg` for vfio errors |
+| "virsh error - is libvirtd running?" | `sudo systemctl start libvirtd` |
+| GPU shows "✗ Not Bound to VFIO" after binding | Wait 3 seconds - the rescan is delayed. If still failing, check `dmesg` for vfio errors |
 | VM starts but GPU monitor stays black | Make sure the GPU is in the same IOMMU group as its audio companion (both must be bound) |
 | Keyboard/mouse stuck in VM | Press Left Ctrl + Right Ctrl at the same time |
 | "Not in libvirt group" in Health Check | `sudo usermod -aG libvirt $USER` then log out and back in |
@@ -181,7 +181,7 @@ Your VM configurations in libvirt are not touched.
 
 ## Contributing
 
-PRs welcome. The GPU name database (`GPU_NAMES` dict in `VMManager.py`) especially benefits from community additions — if your GPU isn't showing a friendly name, open a PR with its PCI ID and name.
+PRs welcome. The GPU name database (`GPU_NAMES` dict in `VMManager.py`) especially benefits from community additions - if your GPU isn't showing a friendly name, open a PR with its PCI ID and name.
 
 Find your GPU's PCI ID:
 ```bash
@@ -194,4 +194,4 @@ lspci -nn | grep -i vga
 
 ## License
 
-MIT — do whatever you want with it.
+MIT - do whatever you want with it.
